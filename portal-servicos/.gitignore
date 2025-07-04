@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node modules
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# IDEs e editores
+.vscode/
+.vscode/* 
+.idea/
+.DS_Store
+
+# Sistema operacional
+Thumbs.db
+
+# Ambiente (caso use dotenv)
+.env*
+!.env.example
+
+# Outros
+.suo
+.ntvs
+*.njsproj
+*.sln
+*.sw?
+
+# Codespaces (opcional)
+*.code-workspace
+.devcontainer/
