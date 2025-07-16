@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
-import Navbar from '../components/Navbar'
 import api from '../services/api'
 import { useNavigate } from 'react-router-dom'
+import Layout from '../components/Layout'
 
 function Dashboard() {
   const [servicos, setServicos] = useState([])
   const [carregando, setCarregando] = useState(true)
   const navigate = useNavigate()
-
 
   useEffect(() => {
     async function carregarServicos() {
@@ -20,35 +19,41 @@ function Dashboard() {
         setCarregando(false)
       }
     }
-
     carregarServicos()
   }, [])
 
   const handleSolicitar = (servico) => {
-  // Envia o serviço via state para a próxima página
-  navigate('/solicitar', { state: { servico } })
+    navigate('/solicitar', { state: { servico } })
   }
 
-
   return (
-    <div style={{ padding: 20 }}>
-      <Navbar />
-      <h2>Serviços Disponíveis</h2>
+    <Layout>
+      <h2 className="text-center text-pink-500 text-4xl font-medium mb-9">
+        Serviços Disponíveis
+      </h2>
 
       {carregando ? (
-        <p>Carregando serviços...</p>
+        <p className="text-gray-600 text-center">Carregando serviços...</p>
       ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <div className="flex flex-wrap gap-5 justify-center items-stretch">
           {servicos.map((servico) => (
-            <div key={servico.id} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '10px', width: '250px' }}>
-              <h3>{servico.title}</h3>
-              <p>{servico.body}</p>
-              <button onClick={() => handleSolicitar(servico)}>Solicitar</button>
+            <div
+              key={servico.id}
+              className="flex flex-col justify-between border border-gray-300 rounded-lg p-4 w-[250px] min-h-[320px] shadow-sm hover:shadow-md transition-shadow"
+            >
+              <h3 className="text-lg font-medium mb-2">{servico.title}</h3>
+              <p className="text-gray-700 mb-4 flex-grow">{servico.body}</p>
+              <button
+                onClick={() => handleSolicitar(servico)}
+                className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors"
+              >
+                Solicitar
+              </button>
             </div>
           ))}
         </div>
       )}
-    </div>
+    </Layout>
   )
 }
 

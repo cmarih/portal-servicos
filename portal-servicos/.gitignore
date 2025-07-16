@@ -38,3 +38,19 @@ Thumbs.db
 # Codespaces (opcional)
 *.code-workspace
 .devcontainer/
+
+# Arquivos gerados pelo Tailwind (se usar CLI para compilar)
+src/styles/output.css
+*.css.map
+
+# Build para produção (Vite ou similar)
+dist/
+
+# Cache e históricos
+.cache/
+*.tsbuildinfo
+
+# Arquivos de lock (se não quiser subir)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
