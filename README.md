@@ -27,3 +27,20 @@ Aplicação web desenvolvida com React + Vite que simula um portal de solicitaç
 - [LocalStorage](https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage)
 
 - [GitHub Codespaces](https://github.com/features/codespaces) (ambiente de desenvolvimento)
+
+# 🎨 Estilização & Responsividade
+O projeto foi aprimorado visualmente com o uso do [Tailwind CSS](https://tailwindcss.com/), trazendo:
+- Estrutura padronizada entre todas as páginas por meio do componente Layout
+- Navbar responsiva com botão hambúrguer em telas pequenas e ocultação automática de links
+- Estilização moderna de formulários, títulos, botões e cards utilizando classes utilitárias
+- Ajuste dinâmico do espaçamento do conteúdo conforme a abertura do menu mobile
+- Tipografia e espaçamentos uniformes para uma melhor experiência em desktop e mobile
+
+# 🧱 Organização do Projeto
+- Criação dos componentes reutilizáveis `Navbar`, `Layout`, `Card`.
+- Utilização de `useState`, `useNavigate` e `useEffect` para controle de estado e navegação
+- Refatoração das páginas `Login` e `Dashboard` com base na estrutura do `Layout`
+- Configuração personalizada do Tailwind em `tailwind.config.js` e `postcss.config.cjs`
+- Atualização do `.gitignore` para excluir arquivos temporários, pastas de build e cache
+
+Se quiser, posso formatar o README.md completo com emojis, introdução mais atrativa e instruções de instalação ou uso. Quer deixar essa vitrine ainda mais profissional? 💻🚀
