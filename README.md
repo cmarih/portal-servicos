@@ -42,5 +42,3 @@ O projeto foi aprimorado visualmente com o uso do [Tailwind CSS](https://tailwin
 - Refatoração das páginas `Login` e `Dashboard` com base na estrutura do `Layout`
 - Configuração personalizada do Tailwind em `tailwind.config.js` e `postcss.config.cjs`
 - Atualização do `.gitignore` para excluir arquivos temporários, pastas de build e cache
-
-Se quiser, posso formatar o README.md completo com emojis, introdução mais atrativa e instruções de instalação ou uso. Quer deixar essa vitrine ainda mais profissional? 💻🚀
