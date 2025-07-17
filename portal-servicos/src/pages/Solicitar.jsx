@@ -1,69 +1,80 @@
-import Navbar from '../components/Navbar'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import Solicitacoes from './Solicitacoes';
+import Layout from '../components/Layout'
 
-//componente principal
 function Solicitar() {
-
-  //Pega o serviço enviado da rota anterior (Dashboard)
-  const location = useLocation();
+  const location = useLocation()
   const servicoSelecionado = location.state?.servico || {}
 
-  //Criar estados para armazenar do formulário
   const [nome, setNome] = useState('')
   const [descricao, setDescricao] = useState('')
 
-  //Função de chamada ao enviar o formulário
   const handleSubmit = (e) => {
-    e.preventDefault() //Evita recarregar a página
+    e.preventDefault()
 
-    //Monta um objeto com a nova solicitação
     const novaSolicitacao = {
-      id: Date.now(), //Gera um ID único com base na data/hora atual
-      nome, // Nome digitado no formulário
-      descricao, // Descrição da solicitação
-      servico: servicoSelecionado.title || 'Não Informado', //Nome do serviço selecionado anteriormente
+      id: Date.now(),
+      nome,
+      descricao,
+      servico: servicoSelecionado.title || 'Não Informado',
     }
 
-    //Busca do localStorage de todas as solicitaçãoes salvas (ou começa com um array vazio)
     const solicitacoesSalvas = JSON.parse(localStorage.getItem('solicitacoes')) || []
-    
-    //Adiciona a nova solicitação à lista
     solicitacoesSalvas.push(novaSolicitacao)
-
-    //Salva tudo de volta no localStorage
     localStorage.setItem('solicitacoes', JSON.stringify(solicitacoesSalvas))
 
-    //Exibe confirmação e limpa os campos do formulário
     alert('Solicitação enviada com sucesso!')
     setNome('')
     setDescricao('')
   }
 
   return (
-    <div style={{ padding: 20 }}>
-      <Navbar />
-      <h2>Solicitação de Serviço</h2>
-      {/*Exibe o nome do serviço vindo da página anterior*/}
-      <p>Serviço: <strong>{servicoSelecionado.title || 'Nenhum serviço selecionado'}</strong></p>
+    <Layout>
+      <h2 className="text-center text-pink-500 text-4xl font-medium mb-4">
+        Solicitação de Serviço
+      </h2>
 
-      {/*Formulário de preenchimento e envio de solicitação */}
-      <form onSubmit={handleSubmit} style={{marginTop:20}}>
+      <p className="text-center text-gray-700 mb-6">
+        Serviço selecionado:{' '}
+        <strong className="text-pink-600">
+          {servicoSelecionado.title || 'Nenhum serviço selecionado'}
+        </strong>
+      </p>
+
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-2x1 mx-auto bg-white p-6 rounded shadow-md space-y-4"
+      >
         <div>
-          <label>Nome: </label><br/>
-          <input  type='text' value={nome} onChange={(e) => setNome(e.target.value)} required />
+          <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+          <input
+            type="text"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
+          />
         </div>
 
         <div>
-          <label>Descrição: </label><br/>
-          <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)} required />
+          <label className="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+          <textarea
+            value={descricao}
+            onChange={(e) => setDescricao(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
+          />
         </div>
 
-        <button type="submit" style={{marginTop: 10}}>Enviar Solicitação</button>
+        <div className='flex justify-center'>
+          <button
+            type="submit"
+            className="bg-pink-600 text-white font-semibold px-5 py-2 rounded hover:bg-pink-700 transition-colors">
+            Enviar Solicitação
+          </button>
+        </div>
       </form>
-
-    </div>
+    </Layout>
   )
 }
 
